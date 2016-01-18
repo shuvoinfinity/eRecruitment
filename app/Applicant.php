@@ -8,14 +8,17 @@ class Applicant extends Model
 {
     //
 
-    protected $fillable = [
-    		'name', 'email', 'phone', 'gender', 'id_type', 'id_number', 
-    		'marital_status', 'photo', 'recommendation_letter', 
-    		'english_translation', 'bangla_translation'
+    protected $guarded = [
+        'id', 'created_at', 'updated_at' 
     ];
 
-    /*public function qualifications()
+    public function qualifications()
     {
     	return $this->hasMany('App\Qualification');
-    }*/
+    }
+
+    public function experiences()
+    {
+        return $this->hasMany('App\Experience');
+    }
 }

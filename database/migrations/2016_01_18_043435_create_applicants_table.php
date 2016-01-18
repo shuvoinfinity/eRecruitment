@@ -21,6 +21,7 @@ class CreateApplicantsTable extends Migration
             $table->string('id_type', 32);
             $table->string('id_number', 32);
             $table->string('marital_status', 15);
+            $table->string('address', 255);
             $table->string('photo', 64);
             $table->string('recommendation_letter', 64);
             $table->text('english_translation');
