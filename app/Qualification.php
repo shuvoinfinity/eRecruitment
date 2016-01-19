@@ -12,6 +12,6 @@ class Qualification extends Model
 
     public function applicant()
     {
-    	return $this->hasMany('App\Applicant');
+    	return $this->belongsTo('App\Applicant');
     }
 }
