@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ApplicantFormRequest;
 
 use App\Applicant;
 
@@ -19,8 +20,9 @@ class ApplicantController extends Controller
     public function index()
     {
         //
-        $applicants = Applicant::all();
-        return view("application.index", compact('applicants'));
+        $hello = 'Hello from Applicant Controller';
+
+        return view("application.index", compact('hello'));
     }
 
     /**
@@ -39,9 +41,10 @@ class ApplicantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ApplicantFormRequest $request)
     {
-        //
+        $all = $request->all();
+        return view('application.index', compact('all'));
     }
 
     /**

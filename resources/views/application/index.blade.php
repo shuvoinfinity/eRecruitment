@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<ul>
-	@foreach($applicants as $applicant)
-	<li> {{$applicant->name}} </li>
-	<li> {{$applicant->bangla_translation}} </li>
-	<li> {{$applicant->english_translation}} </li>
-	@endforeach
-</ul>
+<h2>{{$hello or 'fk'}}</h2>
+
 @endsection
