@@ -55,8 +55,8 @@
                         </div>
 
                         <div class="form-group">
-                          {!! Form::label('Age') !!}
-                          {!! Form::text('date', null, array('class' => 'form-control datepicker','placeholder' => 'Pick the date this task should be completed')) !!}
+                          {!! Form::label('Date of Birth') !!}
+                          {!! Form::text('date_of_birth', null, array('class' => 'form-control datepicker','placeholder' => 'Pick the date this task should be completed')) !!}
                         </div>
 
                         <div class="form-group">
@@ -91,7 +91,7 @@
                           <th>Degree</th>
                           <th>Institute</th>
                           <th>Result</th>
-                          <th>Passing Year</th>
+                          <th colspan="2">Passing Year</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -108,9 +108,19 @@
                           <td>
                             {!! Form::text('passing_year[]', null, ['class' => 'form-control']) !!}
                           </td>
+                          <td>
+                            <p class="removeRow">
+                              <span class="glyphicon glyphicon-remove"></span>
+                            </p>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
+                    <div class="text-right">
+                        <p class="btn btn-sm btn-primary addRow">
+                          <span class="glyphicon glyphicon-plus"></span> add more
+                        </p>
+                    </div>
 
                     
                     <h3> Job Experience(s)</h3>                  
@@ -121,7 +131,7 @@
                           <th>Designation</th>
                           <th>Organization</th>
                           <th>From (Date)</th>
-                          <th>To (Date)</th>
+                          <th colspan="2">To (Date)</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -133,15 +143,24 @@
                             {!! Form::text('organization[]', null, ['class' => 'form-control']) !!}
                           </td>
                           <td>
-                            {!! Form::date('from[]', null, ['class' => 'form-control']) !!}
+                            {!! Form::date('from[]', null, ['class' => 'form-control datepicker fromDatePicker']) !!}
                           </td>
                           <td>
-                            {!! Form::date('to[]', null, ['class' => 'form-control']) !!}
+                            {!! Form::date('to[]', null, ['class' => 'form-control datepicker toDatePicker']) !!}
+                          </td>
+                          <td>
+                            <p class="removeRow">
+                              <span class="glyphicon glyphicon-remove"></span>
+                            </p>
                           </td>
                         </tr>
                       </tbody>
                     </table>
-
+                    <div class="text-right">
+                        <p class="btn btn-sm btn-primary addRow">
+                          <span class="glyphicon glyphicon-plus"></span> add more
+                        </p>
+                    </div>
                     
                     <h3> Translation Test</h3>
                     <hr> 

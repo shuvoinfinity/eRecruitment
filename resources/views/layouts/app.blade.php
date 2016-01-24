@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
@@ -78,6 +79,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script type="text/javascript">
+        $('.datepicker, .fromDatePicker, .toDatePicker').datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true
+        });
+
+        $('.addRow').on('click', function(){
+            var prevTable = $(this).parent().prev('table');
+            var prevRow = prevTable.find('tr:last').clone(true);
+            prevRow.find("input").val('');
+            prevRow.appendTo(prevTable);
+
+            prevRow.find('.fromDatePicker').attr('id', 'dp'+ new Date().getTime());
+            prevRow.find('.toDatePicker').attr('id', 'dp'+ new Date().getTime() + 1);
+
+                $('.fromDatePicker, .toDatePicker').removeClass('hasDatepicker').datepicker({
+                    dateFormat: 'yy-mm-dd',
+                    changeMonth: true,
+                    changeYear: true
+                });            
+        });
+
+        $('.removeRow').on('click', function(){
+            var rowCount = $(this).closest('tr').index();
+            if(rowCount > 0) {
+                $(this).closest('tr').remove();    
+            }
+            
+        });
+    </script>
 </body>
 </html>
