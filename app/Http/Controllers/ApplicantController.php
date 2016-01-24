@@ -43,8 +43,8 @@ class ApplicantController extends Controller
      */
     public function store(ApplicantFormRequest $request)
     {
-        $all = $request->all();
-        return view('application.index', compact('all'));
+        
+        return view('application.index');
     }
 
     /**

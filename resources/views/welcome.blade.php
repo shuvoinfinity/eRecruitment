@@ -9,7 +9,7 @@
 
                 <div class="panel-body"> 
 
-                  {!! Form::open( array( 'class' => 'form', 'files' => true, 'accept-charset'=>'UTF-8')) !!}
+                  {!! Form::open( array( 'url'=>'application', 'class' => 'form', 'files' => true, 'accept-charset'=>'UTF-8')) !!}
 
                     <h3> Personal Information</h3>
                     <hr>
@@ -53,6 +53,12 @@
                         {!! Form::file('photo', null) !!}
                         <p class="help-block">Example block-level help text here.</p>
                         </div>
+
+                        <div class="form-group">
+                          {!! Form::label('Age') !!}
+                          {!! Form::text('date', null, array('class' => 'form-control datepicker','placeholder' => 'Pick the date this task should be completed')) !!}
+                        </div>
+
                         <div class="form-group">
                         {!! Form::label('Gender') !!}<br/>                        
                         {!! Form::label('Male') !!}
@@ -67,22 +73,18 @@
                         {!! Form::label('Marital Status') !!}
                         {!! Form::select('marital_status',array('married'=>'Married','single'=>'Single'),'single') !!}
                         </div>
-                        <div class="form-group">
-                          {!! Form::label('Age') !!}
-                          {!! Form::text('age', null, array('required', 'class' => 'form-control', 'placeholder' => 'Your age!')) !!}
-                        </div> 
+                        
                         <div class="form-group">
                         {!! Form::label('Upload Church Pastors Recommendation Letter') !!}
                         {!! Form::file('recommendation_letter', null) !!}
                         <p class="help-block">Example block-level help text here.</p>
                         </div>
-
                       </div>
 
                     </div>            
-                      
-                    <hr> 
-                    <h3> Educational Qualifications</h3>                                                    
+
+                    <h3> Educational Qualifications</h3> 
+                    <hr>                                                   
                     <table class="table table-bordered table-hover">
                       <thead>
                         <tr>
@@ -110,6 +112,7 @@
                       </tbody>
                     </table>
 
+                    
                     <h3> Job Experience(s)</h3>                  
                     <hr>                
                     <table class="table table-bordered table-hover">
@@ -139,9 +142,9 @@
                       </tbody>
                     </table>
 
-                    <hr> 
+                    
                     <h3> Translation Test</h3>
-
+                    <hr> 
                     <div class="from-group">
                       
                       <p class="lead">
@@ -185,9 +188,20 @@
                     </div>
 
                   {!! Form::close() !!}
+
+                  @if($errors->any())
+                  <div class="alert alert-danger">
+                    <ul>
+                      @foreach($errors->all() as $error)
+                      <li>{{$error}}</li>
+                      @endforeach
+                    </ul>
+                  </div>
+                  @endif
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection
