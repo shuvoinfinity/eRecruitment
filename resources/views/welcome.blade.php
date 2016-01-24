@@ -68,6 +68,10 @@
                         {!! Form::select('marital_status',array('married'=>'Married','single'=>'Single'),'single') !!}
                         </div>
                         <div class="form-group">
+                          {!! Form::label('Age') !!}
+                          {!! Form::text('age', null, array('required', 'class' => 'form-control', 'placeholder' => 'Your age!')) !!}
+                        </div> 
+                        <div class="form-group">
                         {!! Form::label('Upload Church Pastors Recommendation Letter') !!}
                         {!! Form::file('recommendation_letter', null) !!}
                         <p class="help-block">Example block-level help text here.</p>
