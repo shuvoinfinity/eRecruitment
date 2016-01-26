@@ -43,8 +43,28 @@ class ApplicantController extends Controller
      */
     public function store(ApplicantFormRequest $request)
     {
-        
-        return view('application.index');
+        if ($request != null) {
+            
+            $applicant = new Applicant(array(
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'phone' => $request->get('phone'),
+                'gender' => $request->get('gender'),
+                'date_of_birth' => $request->get('date_of_birth'),
+                'id_type' => $request->get('id_type'),
+                'id_number' => $request->get('id_number'),
+                'marital_status' => $request->get('marital_status'),
+                'address' => $request->get('address'),
+                'photo' => $request->get('photo'),
+                'recommendation_letter' => $request->get('recommendation_letter'),
+                'english_translation' => $request->get('english_translation'),
+                'bangla_translation' => $request->get('bangla_translation')
+                ));
+            print_r($applicant);
+            exit();
+        }
+
+        return Redirect::to('/welcome');
     }
 
     /**

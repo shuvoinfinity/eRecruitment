@@ -28,13 +28,13 @@ class ApplicantFormRequest extends Request
                 'email' =>'required|email|max:64',
                 'phone' => 'required|max:64',
                 'gender' => 'required',
-                'age' => 'required',
+                'date_of_birth' => 'required|date',
                 'id_type' => 'required',
                 'id_number' => 'required|max:32',
                 'marital_status' => 'required',
                 'address' => 'required| max:255',
-                'photo' => 'required|image',
-                'recommendation_letter' => 'required|mimes:pdf',
+                'photo' => 'required|mimes:png| max:150',
+                'recommendation_letter' => 'required|mimes:pdf| max:200',
                 'english_translation' => 'max:1024',
                 'bangla_translation' => 'max:1024'
 

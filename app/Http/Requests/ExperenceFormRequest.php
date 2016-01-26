@@ -24,10 +24,10 @@ class ExperenceFormRequest extends Request
     public function rules()
     {
         return [
-            'designation.*' => 'required|max:64',
-            'organization.*' => 'required|max:120',
-            'from.*' => 'required|date',
-            'to.*' => 'required|date'
+            'designation.*' => 'max:64',
+            'organization.*' => 'max:120',
+            'from.*' => 'date',
+            'to.*' => 'date'
         ];
     }
 }
