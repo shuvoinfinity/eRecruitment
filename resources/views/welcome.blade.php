@@ -8,7 +8,15 @@
         <div class="panel-heading"> Welcome to Compassion International Bangladesh e-Recruitment. </div>
 
         <div class="panel-body"> 
-
+          @if($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach($errors->all() as $error)
+              <li>{{$error}}</li>
+              @endforeach
+            </ul>
+          </div>
+          @endif
           {!! Form::open( array( 'url'=>'application', 'class' => 'form', 'files' => true, 'accept-charset'=>'UTF-8')) !!}
 
           <h3> Personal Information</h3>
@@ -67,7 +75,7 @@
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
                 {!! Form::label('Female') !!} 
                 &nbsp;
-                {!! Form::radio('gender', 'male') !!}
+                {!! Form::radio('gender', 'female') !!}
               </div>
               <div class="form-group">
                 {!! Form::label('Marital Status') !!}
@@ -83,144 +91,134 @@
 
           </div>            
 
-                    <!--h3> Educational Qualifications</h3> 
-                    <hr>                                                   
-                    <table class="table table-bordered table-hover">
-                      <thead>
-                        <tr>
-                          <th>Degree</th>
-                          <th>Institute</th>
-                          <th>Result</th>
-                          <th colspan="2">Passing Year</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            {!! Form::text('degree[]', null, [ 'required', 'class' => 'form-control', 'placeholder' => 'Level of education']) !!}
-                          </td>
-                          <td>
-                            {!! Form::text('institute[]', null, [ 'required', 'class' => 'form-control', 'placeholder' => 'Name of Institute']) !!}
-                          </td>
-                          <td>
-                            {!! Form::text('result[]', null, [ 'required', 'class' => 'form-control', 'placeholder' => 'Result in gpa/division']) !!}
-                          </td>
-                          <td>
-                            {!! Form::text('passing_year[]', null, [ 'required', 'class' => 'form-control', 'placeholder' => 'Example: 2012']) !!}
-                          </td>
-                          <td>
-                            <p class="removeRow">
-                              <span class="glyphicon glyphicon-remove"></span>
-                            </p>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <div class="text-right">
-                        <p class="btn btn-sm btn-primary addRow">
-                          <span class="glyphicon glyphicon-plus"></span> add more
-                        </p>
-                    </div>
+          <h3> Educational Qualifications</h3> 
+          <hr>                                                   
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Degree</th>
+                <th>Institute</th>
+                <th>Result</th>
+                <th colspan="2">Passing Year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  {!! Form::text('degree[]', null, [ 'required' => 'required', 'class' => 'form-control', 'placeholder' => 'Level of education']) !!}
+                </td>
+                <td>
+                  {!! Form::text('institute[]', null, ['required' => 'required','class' => 'form-control', 'placeholder' => 'Name of Institute']) !!}
+                </td>
+                <td>
+                  {!! Form::text('result[]', null, ['required' => 'required','class' => 'form-control', 'placeholder' => 'Result in gpa/division']) !!}
+                </td>
+                <td>
+                  {!! Form::text('passing_year[]', null, ['required' => 'required','class' => 'form-control', 'placeholder' => 'Example: 2012']) !!}
+                </td>
+                <td>
+                  <p class="removeRow">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-right">
+            <p class="btn btn-sm btn-primary addRow">
+              <span class="glyphicon glyphicon-plus"></span> add more
+            </p>
+          </div>
 
-                    
-                    <h3> Job Experience(s) <small>If Any</samll></h3>                  
-                    <hr>                
-                    <table class="table table-bordered table-hover">
-                      <thead>
-                        <tr>
-                          <th>Designation</th>
-                          <th>Organization</th>
-                          <th>From (Date)</th>
-                          <th colspan="2">To (Date)</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            {!! Form::text('designation[]', null, ['class' => 'form-control']) !!}
-                          </td>
-                          <td>
-                            {!! Form::text('organization[]', null, ['class' => 'form-control']) !!}
-                          </td>
-                          <td>
-                            {!! Form::date('from[]', null, ['class' => 'form-control datepicker fromDatePicker']) !!}
-                          </td>
-                          <td>
-                            {!! Form::date('to[]', null, ['class' => 'form-control datepicker toDatePicker']) !!}
-                          </td>
-                          <td>
-                            <p class="removeRow">
-                              <span class="glyphicon glyphicon-remove"></span>
-                            </p>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <div class="text-right">
-                        <p class="btn btn-sm btn-primary addRow">
-                          <span class="glyphicon glyphicon-plus"></span> add more
-                        </p>
-                      </div-->
 
-                      <h3> Translation Test</h3>
-                      <hr> 
-                      <div class="from-group">
+          <h3> Job Experience(s) <small>If Any</samll></h3>                  
+          <hr>                
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Designation</th>
+                <th>Organization</th>
+                <th>From (Date)</th>
+                <th colspan="2">To (Date)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  {!! Form::text('designation[]', null, ['class' => 'form-control']) !!}
+                </td>
+                <td>
+                  {!! Form::text('organization[]', null, ['class' => 'form-control']) !!}
+                </td>
+                <td>
+                  {!! Form::date('from[]', null, ['class' => 'form-control datepicker fromDatePicker']) !!}
+                </td>
+                <td>
+                  {!! Form::date('to[]', null, ['class' => 'form-control datepicker toDatePicker']) !!}
+                </td>
+                <td>
+                  <p class="removeRow">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-right">
+            <p class="btn btn-sm btn-primary addRow">
+              <span class="glyphicon glyphicon-plus"></span> add more
+            </p>
+          </div>
 
-                        <p class="lead">
-                          Nullam quis risus eget urna mollis ornare vel eu leo. 
-                          Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                          Nullam id dolor id nibh ultricies vehicula.
-                          Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                          Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, 
-                          nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non 
-                          metus auctor fringilla.
-                          Maecenas sed diam eget risus varius blandit sit amet non magna. 
-                          Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, 
-                          nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-                        </p>
-                        {!! Form::label('Translate to Bangla', null, ['class'=>'form-control text-center']) !!}
-                        {!! Form::textarea('bangla_translation', null, ['class' => 'form-control', 'placeholder' => 'Start writting here . . .']) !!}
-                      </div>
-                      <br>
-                      <div class="from-group">
+          <h3> Translation Test</h3>
+          <hr> 
+          <div class="from-group">
 
-                        <p class="lead">
-                          Nullam quis risus eget urna mollis ornare vel eu leo. 
-                          Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                          Nullam id dolor id nibh ultricies vehicula.
-                          Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                          Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, 
-                          nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non 
-                          metus auctor fringilla.
-                          Maecenas sed diam eget risus varius blandit sit amet non magna. 
-                          Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, 
-                          nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-                        </p>
-                        {!! Form::label('Translate to English', null, ['class' => 'form-control text-center']) !!}
-                        {!! Form::textarea('english _translation', null, ['class' => 'form-control', 'placeholder' => 'Start writting here . . .']) !!}
-                      </div>
+            <p class="lead">
+              Nullam quis risus eget urna mollis ornare vel eu leo. 
+              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+              Nullam id dolor id nibh ultricies vehicula.
+              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+              Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, 
+              nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non 
+              metus auctor fringilla.
+              Maecenas sed diam eget risus varius blandit sit amet non magna. 
+              Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, 
+              nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+            </p>
+            {!! Form::label('Translate to Bangla', null, ['class'=>'form-control text-center']) !!}
+            {!! Form::textarea('bangla_translation', null, ['class' => 'form-control', 'placeholder' => 'Start writting here . . .']) !!}
+          </div>
+          <br>
+          <div class="from-group">
 
-                      <div class = "form-group text-center">
-                        <hr>
-                        {!! Form::submit('Contact Us!', array('class' => 'btn btn-primary')) !!}
+            <p class="lead">
+              Nullam quis risus eget urna mollis ornare vel eu leo. 
+              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+              Nullam id dolor id nibh ultricies vehicula.
+              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+              Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, 
+              nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non 
+              metus auctor fringilla.
+              Maecenas sed diam eget risus varius blandit sit amet non magna. 
+              Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, 
+              nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+            </p>
+            {!! Form::label('Translate to English', null, ['class' => 'form-control text-center']) !!}
+            {!! Form::textarea('english_translation', null, ['class' => 'form-control', 'placeholder' => 'Start writting here . . .']) !!}
+          </div>
 
-                      </div>
+          <div class = "form-group text-center">
+            <hr>
+            {!! Form::submit('Contact Us!', array('class' => 'btn btn-primary')) !!}
 
-                      {!! Form::close() !!}
+          </div>
 
-                      @if($errors->any())
-                      <div class="alert alert-danger">
-                        <ul>
-                          @foreach($errors->all() as $error)
-                          <li>{{$error}}</li>
-                          @endforeach
-                        </ul>
-                      </div>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {!! Form::close() !!}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-            @endsection
+@endsection

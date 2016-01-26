@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ApplicantFormRequest;
 
 use App\Applicant;
+use App\Experience;
+use App\Qualification;
+use DB;
 
 class ApplicantController extends Controller
 {
@@ -43,28 +46,86 @@ class ApplicantController extends Controller
      */
     public function store(ApplicantFormRequest $request)
     {
-        if ($request != null) {
+        try {
             
-            $applicant = new Applicant(array(
-                'name' => $request->get('name'),
-                'email' => $request->get('email'),
-                'phone' => $request->get('phone'),
-                'gender' => $request->get('gender'),
-                'date_of_birth' => $request->get('date_of_birth'),
-                'id_type' => $request->get('id_type'),
-                'id_number' => $request->get('id_number'),
-                'marital_status' => $request->get('marital_status'),
-                'address' => $request->get('address'),
-                'photo' => $request->get('photo'),
-                'recommendation_letter' => $request->get('recommendation_letter'),
-                'english_translation' => $request->get('english_translation'),
-                'bangla_translation' => $request->get('bangla_translation')
-                ));
-            print_r($applicant);
-            exit();
-        }
+            DB::beginTransaction();
 
-        return Redirect::to('/welcome');
+            $applicant = new Applicant;
+
+            $applicant->fill($request->only('name', 'email', 'phone', 'gender', 'date_of_birth', 'id_type', 
+                    'id_number', 'marital_status', 'english_translation', 'bangla_translation'));
+            if($request->hasFile('photo')){
+                $extension = $request->file('photo')->getClientOriginalExtension();
+                $photoName = $request->input('email').time().'.'.$extension;
+
+                $request->file('photo')->move('uploads/photos/', $photoName);
+
+                $applicant->photo = $photoName;
+            }
+
+            if($request->hasFile('recommendation_letter')){
+                $extension = $request->file('recommendation_letter')->getClientOriginalExtension();
+                $fileName = $request->input('email').time().'.'.$extension;
+
+                $request->file('recommendation_letter')->move('uploads/letters/', $fileName);
+
+                $applicant->recommendation_letter = $fileName;
+            } 
+
+            $applicant->save();
+
+            # Qualification Entry
+            $degrees = $request->input('degree');
+            $institutes = $request->input('institute');
+            $results = $request->input('result');
+            $passing_years = $request->input('passing_year');
+
+            if( count( $degrees ) > 0 ) {
+                foreach ($degrees as $degree) {
+                    $index = array_search($degree, $degrees);
+
+                    $qualification = new Qualification;
+                    $qualification->degree = $degrees[$index];
+                    $qualification->institute = $institutes[$index];
+                    $qualification->result = $results[$index];
+                    $qualification->passing_year = $passing_years[$index];
+                    $qualification->applicant_id = $applicant->id;
+                    $qualification->save();
+                }
+            }
+
+            # Employments Entry
+            $designations = $request->input('designation');
+            $organizations = $request->input('organization');
+            $froms = $request->input('from');
+            $tos = $request->input('to');
+
+            if( count( $designations ) > 0 ) {
+                foreach ($designations as $designation) {
+                    $index = array_search($designation, $designations);
+
+                    $experience = new Experience;
+                    $experience->designation = $designations[$index];
+                    $experience->organization = $organizations[$index];
+                    $experience->from = $froms[$index];
+                    $experience->to = $tos[$index];
+                    $experience->applicant_id = $applicant->id;
+                    $experience->save();
+                }
+            }        
+
+            DB::commit();
+
+            return redirect('/welcome');
+
+
+        } catch (\Exception $e) {
+            
+            DB::rollback();
+
+            dd( $e->getMessage() );
+
+        }
     }
 
     /**
