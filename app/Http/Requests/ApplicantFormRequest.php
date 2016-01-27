@@ -36,7 +36,7 @@ class ApplicantFormRequest extends Request
                 'photo' => 'required|mimes:jpeg,bmp,png| max:150',
                 'recommendation_letter' => 'required|mimes:pdf| max:200',
                 'english_translation' => 'required|max:1024',
-                'bangla_translation' => 'required|max:1024',
+                'bangla_translation' => 'required|max:1024'
               /*  'degree.*' => 'required|max:64',
                 'institute.*' => 'required|max:120',
                 'result.*' => 'required|max:32',

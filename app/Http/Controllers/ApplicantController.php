@@ -22,10 +22,8 @@ class ApplicantController extends Controller
      */
     public function index()
     {
-        //
-        $hello = 'Hello from Applicant Controller';
 
-        return view("application.index", compact('hello'));
+        return view("application.index");
     }
 
     /**
@@ -52,9 +50,13 @@ class ApplicantController extends Controller
 
             $applicant = new Applicant;
 
-            $applicant->fill($request->only('name', 'email', 'phone', 'gender', 'date_of_birth', 'id_type', 
-                    'id_number', 'marital_status', 'english_translation', 'bangla_translation'));
+            $applicant->fill($request->only(
+                    'name', 'email', 'phone', 'address', 'gender', 'date_of_birth', 'id_type', 
+                    'id_number', 'marital_status', 'english_translation', 'bangla_translation'
+                                            ));
+            
             if($request->hasFile('photo')){
+
                 $extension = $request->file('photo')->getClientOriginalExtension();
                 $photoName = $request->input('email').time().'.'.$extension;
 
@@ -64,6 +66,7 @@ class ApplicantController extends Controller
             }
 
             if($request->hasFile('recommendation_letter')){
+
                 $extension = $request->file('recommendation_letter')->getClientOriginalExtension();
                 $fileName = $request->input('email').time().'.'.$extension;
 
@@ -116,7 +119,7 @@ class ApplicantController extends Controller
 
             DB::commit();
 
-            return redirect('/welcome');
+            return view('application.index')->with('message', 'You have successfully submitted your resume!!');
 
 
         } catch (\Exception $e) {
