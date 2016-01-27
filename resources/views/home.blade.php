@@ -9,6 +9,15 @@
 
                 <div class="panel-body">
                     You are logged in!
+
+                    <h1>List of Applicants</h1>
+                    @if($applicants!= null)
+                    <ul>
+                        @foreach($applicants as $applicant)
+                        <li> {{$applicant->name}} </li>
+                        @endforeach
+                    </ul>
+                    @endif
                 </div>
             </div>
         </div>

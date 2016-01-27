@@ -32,20 +32,11 @@ class ApplicantFormRequest extends Request
                 'id_type' => 'required',
                 'id_number' => 'required|max:32',
                 'marital_status' => 'required',
-                'address' => 'required| max:255',
-                'photo' => 'required|mimes:jpeg,bmp,png| max:150',
-                'recommendation_letter' => 'required|mimes:pdf| max:200',
+                'address' => 'required|max:255',
+                'photo' => 'required|mimes:jpeg,bmp,png|max:150',
+                'recommendation_letter' => 'required|mimes:pdf|max:200',
                 'english_translation' => 'required|max:1024',
                 'bangla_translation' => 'required|max:1024'
-              /*  'degree.*' => 'required|max:64',
-                'institute.*' => 'required|max:120',
-                'result.*' => 'required|max:32',
-                'passing_year.*' => 'required|max:4',
-                'designation.*' => 'max:64',
-                'organization.*' => 'max:120',
-                'from.*' => 'date',
-                'to.*' => 'date'*/
-
-        ];
+                ];
     }
 }

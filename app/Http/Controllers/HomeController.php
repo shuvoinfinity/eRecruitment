@@ -25,7 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $applicants = Applicant::all();
+        return view('home', compact('applicants'));
     }
 
 }
