@@ -139,7 +139,9 @@ class ApplicantController extends Controller
      */
     public function show($id)
     {
-        //
+        $applicant = Applicant::find($id);
+
+        print_r($applicant); exit();
     }
 
     /**

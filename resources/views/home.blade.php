@@ -6,14 +6,10 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>
-                        Dashboard <samll class="bg-success">You are logged in!</samll>
-                    </h4>
+                    <h4>Dashboard <small class = "text-success">You are logged in!</small></h4>
                 </div>
 
                 <div class="panel-body">
-                    You are logged in!
-
                     <h1>List of Applicants</h1>
 
                     @if($applicants!= null)
@@ -36,7 +32,7 @@
                                 <td> {{$applicant->email}} </td>
                                 <td> {{$applicant->phone}} </td>
                                 <td> {{$applicant->created_at}} </td>
-                                <td>view</td>
+                                <td> <a href="{{ url('application',$applicant->id) }}">view</a></td>
                                 <td>pdf</td>
                             </tr>
                             @endforeach
