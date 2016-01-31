@@ -31,7 +31,7 @@
                                 <td> {{$applicant->name}} </td>
                                 <td> {{$applicant->email}} </td>
                                 <td> {{$applicant->phone}} </td>
-                                <td> {{$applicant->created_at}} </td>
+                                <td> {{$applicant->created_at->format('Y-m-d')}} </td>
                                 <td> <a href="{{ url('application',$applicant->id) }}">view</a></td>
                                 <td>pdf</td>
                             </tr>
