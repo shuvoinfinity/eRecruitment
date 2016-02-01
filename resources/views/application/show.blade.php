@@ -7,19 +7,15 @@
             <div class="panel panel-default">
                 @if($application != null)
                 <div class="panel-heading">
-                    <h3>Resume of {{$application->name}}</h3>
+                    <h3 class ="text-success"> Resume of {{$application->name}} </h3>
                 </div>
                 <div class="panel-body">
-                    <div class="row">
-
-                            <h4 class = "text-center">Basic information</h4>
-                            <hr>
-                    
-                        <div class="col-md-3 text-right">
-                            <img src="/uploads/photos/test2@mail.com1453873350.jpg" alt="Image not Set yet" class="img-thumbnail">
-                        </div>
-
-                        <div class ="col-md-9">
+                    <div class="row">                   
+                        <table class = "table" style="border-top:0px;">
+                            <tr width="100%">
+                                <td width = "70%">
+                                    <div>
+                            <h3 class = "text-primary">Basic information</h3>
                             <p>
                                 <h2>{{$application->name}}</h2>
                             </p>
@@ -56,11 +52,19 @@
                             </address>
                             
                         </div>
+                                </td>
+                                <td width = "30%">
+                                    <div>
+                                        <img src="{{ asset('uploads/photos/'.$application->photo) }}" alt="Image not Set yet" hieght = "200" width= "200" class="img-thumbnail">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
 
                     </div>
 
                     <div class="row">
-                        <h4 class = "text-center">Educational Qualifications</h4>
+                        <h3 class = "text-primary">Educational Qualifications</h3>
                         <hr>
                         @if($application->has('qualifications'))
                             <div class="table-responsive">          
@@ -91,7 +95,7 @@
                     </div>
 
                     <div class="row">
-                        <h4 class = "text-center">Experiences</h4>
+                        <h3 class = "text-primary">Experiences</h3>
                         <hr>
                         @if($application->has('qualifications'))
                             <div class="table-responsive">          
@@ -122,7 +126,7 @@
                     </div>
 
                     <hr>
-                    <h4>Translation</h4>
+                    <h3 class = "text-primary">Translation</h4>
                     <div class="jumbotron">
                         <h4>English Translation</h4>
                         <hr>

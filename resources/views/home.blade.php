@@ -21,8 +21,8 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Applied Date</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Details</th>
+                                    <th>Recommendation Letter</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,8 +32,8 @@
                                 <td> {{$applicant->email}} </td>
                                 <td> {{$applicant->phone}} </td>
                                 <td> {{$applicant->created_at->format('Y-m-d')}} </td>
-                                <td> <a href="{{ url('application',$applicant->id) }}">view</a></td>
-                                <td>pdf</td>
+                                <td> <a target="_blank" href="{{ url('application',$applicant->id) }}">view</a></td>
+                                <td><a target="_blank" href="{{asset('uploads/letters/'.$applicant->recommendation_letter)}}">Download</a></td>
                             </tr>
                             @endforeach
                             </tbody>
