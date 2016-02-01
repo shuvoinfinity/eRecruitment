@@ -139,10 +139,10 @@ class ApplicantController extends Controller
      */
     public function show($id)
     {
-        $applicant = Applicant::with('qualifications', 'experiences')->findOrFail($id);
+        $application = Applicant::with('qualifications', 'experiences')->findOrFail($id);
         
-        //dd($applicant);
-        return view('application.show', compact('applicant')); 
+        //dd($application);
+        return view('application.show', compact('application')); 
     }
 
     /**
