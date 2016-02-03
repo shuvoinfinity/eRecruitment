@@ -41,7 +41,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    e-Recruitment
+                    <img src="{{ asset('/logo.png') }}" alt="Image not Set yet" hieght = "120" width= "120" class="thumbnail">
                 </a>
             </div>
 

@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4>Dashboard <small class = "text-success">You are logged in!</small></h4>
+                <div class="panel-heading" style="background-color:#0055A6; color:white">
+                    <h4>Dashboard <small class = "text-default">You are logged in!</small></h4>
                 </div>
 
                 <div class="panel-body">

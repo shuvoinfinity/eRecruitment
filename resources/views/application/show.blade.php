@@ -6,7 +6,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 @if($application != null)
-                <div class="panel-heading">
+                <div class="panel-heading" >
                     <h3 class ="text-success"> Resume of {{$application->name}} </h3>
                 </div>
                 <div class="panel-body">
