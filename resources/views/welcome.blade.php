@@ -58,7 +58,7 @@
 
               <div class="form-group">
                 {!! Form::label('Upload Photo') !!}
-                {!! Form::file('photo', null, array('required')) !!}
+                {!! Form::file('photo', ['required' => 'required']) !!}
                 <p class="help-block">Image must be in <mark>jpg</mark> formate and maximum file size <mark>150KB</mark></p>
               </div>
 
@@ -84,7 +84,7 @@
 
               <div class="form-group">
                 {!! Form::label('Upload Church Pastors Recommendation Letter') !!}
-                {!! Form::file('recommendation_letter', null ) !!}
+                {!! Form::file('recommendation_letter', ['required' => 'required']) !!}
                 <p class="help-block">Letter must be in <mark>pdf</mark> formate and maximum file size <mark>200KB</mark></p>
               </div>
             </div>
@@ -105,16 +105,16 @@
             <tbody>
               <tr>
                 <td>
-                  {!! Form::text('degree[]', null, [ 'required' => 'required', 'class' => 'form-control', 'placeholder' => 'Level of education']) !!}
+                  {!! Form::text('degree[]', old('degee.0'), [ 'required' => 'required', 'class' => 'form-control', 'placeholder' => 'Level of education']) !!}
                 </td>
                 <td>
-                  {!! Form::text('institute[]', null, ['required' => 'required','class' => 'form-control', 'placeholder' => 'Name of Institute']) !!}
+                  {!! Form::text('institute[]', old('institute.0'), ['required' => 'required','class' => 'form-control', 'placeholder' => 'Name of Institute']) !!}
                 </td>
                 <td>
-                  {!! Form::text('result[]', null, ['required' => 'required','class' => 'form-control', 'placeholder' => 'Result in gpa/division']) !!}
+                  {!! Form::text('result[]', old('result.0'), ['required' => 'required','class' => 'form-control', 'placeholder' => 'Result in gpa/division']) !!}
                 </td>
                 <td>
-                  {!! Form::text('passing_year[]', null, ['required' => 'required','class' => 'form-control', 'placeholder' => 'Example: 2012']) !!}
+                  {!! Form::text('passing_year[]', old('passing_year.0'), ['required' => 'required','class' => 'form-control', 'placeholder' => 'Example: 2012']) !!}
                 </td>
                 <td>
                   <p class="removeRow">
@@ -145,16 +145,16 @@
             <tbody>
               <tr>
                 <td>
-                  {!! Form::text('designation[]', null, ['class' => 'form-control']) !!}
+                  {!! Form::text('designation[]', old('designation.0'), ['class' => 'form-control']) !!}
                 </td>
                 <td>
-                  {!! Form::text('organization[]', null, ['class' => 'form-control']) !!}
+                  {!! Form::text('organization[]', old('organization.0'), ['class' => 'form-control']) !!}
                 </td>
                 <td>
-                  {!! Form::date('from[]', null, ['class' => 'form-control datepicker fromDatePicker']) !!}
+                  {!! Form::date('from[]', old('from.0'), ['class' => 'form-control datepicker fromDatePicker']) !!}
                 </td>
                 <td>
-                  {!! Form::date('to[]', null, ['class' => 'form-control datepicker toDatePicker']) !!}
+                  {!! Form::date('to[]', old('to.0'), ['class' => 'form-control datepicker toDatePicker']) !!}
                 </td>
                 <td>
                   <p class="removeRow">
@@ -187,7 +187,7 @@
               nisi erat porttitor ligula, eget lacinia odio sem nec elit.
             </p>
             {!! Form::label('Translate to Bangla', null, ['class'=>'form-control text-center']) !!}
-            {!! Form::textarea('bangla_translation', null, ['class' => 'form-control', 'placeholder' => 'Start writting here . . .']) !!}
+            {!! Form::textarea('bangla_translation', null, ['required' => 'required','class' => 'form-control', 'placeholder' => 'Start writting here . . .']) !!}
           </div>
           <br>
           <div class="from-group">
@@ -205,7 +205,7 @@
               nisi erat porttitor ligula, eget lacinia odio sem nec elit.
             </p>
             {!! Form::label('Translate to English', null, ['class' => 'form-control text-center']) !!}
-            {!! Form::textarea('english_translation', null, ['class' => 'form-control', 'placeholder' => 'Start writting here . . .']) !!}
+            {!! Form::textarea('english_translation', null, ['required' => 'required', 'class' => 'form-control', 'placeholder' => 'Start writting here . . .']) !!}
           </div>
 
           <div class = "form-group text-center">

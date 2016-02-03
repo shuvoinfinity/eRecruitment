@@ -33,8 +33,8 @@ class ApplicantFormRequest extends Request
                 'id_number' => 'required|max:32',
                 'marital_status' => 'required',
                 'address' => 'required|max:255',
-                'photo' => 'required|mimes:jpeg,bmp,png|max:150',
-                'recommendation_letter' => 'required|mimes:pdf|max:200',
+                'photo' => 'image|size:150',
+                'recommendation_letter' => 'mimes:pdf|size:200',
                 'english_translation' => 'required|max:1024',
                 'bangla_translation' => 'required|max:1024'
                 ];

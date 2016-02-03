@@ -119,7 +119,8 @@ class ApplicantController extends Controller
 
             DB::commit();
 
-            return view('application.index')->with('message', 'You have successfully submitted your resume!!');
+            //return view('application.index')->with('message', 'You have successfully submitted your resume!!');
+            return redirect('/response')->with('message', 'Application submission successful');
 
 
         } catch (\Exception $e) {
