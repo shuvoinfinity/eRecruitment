@@ -19,7 +19,7 @@
             </ul>
           </div>
           @endif
-          {!! Form::open( array( 'url'=>'application', 'class' => 'form', 'files' => true, 'accept-charset'=>'UTF-8')) !!}
+          {!! Form::open( array( 'url'=>'application', 'files' => true, 'accept-charset'=>'UTF-8')) !!}
 
           <h3> Personal Information</h3>
           <hr>
@@ -66,7 +66,7 @@
 
               <div class="form-group">
                 {!! Form::label('Date of Birth') !!}
-                {!! Form::text('date_of_birth', null, array( 'required', 'class' => 'form-control datepicker','placeholder' => 'Pick the Birth Date')) !!}
+                {!! Form::text('date_of_birth', null, array( 'required' => 'required', 'class' => 'form-control datepicker','placeholder' => 'Pick the Birth Date')) !!}
               </div>
 
               <div class="form-group">
@@ -107,16 +107,16 @@
             <tbody>
               <tr>
                 <td>
-                  {!! Form::text('degree[]', old('degee.0'), [ 'required' => 'required', 'class' => 'form-control', 'placeholder' => 'Level of education']) !!}
+                  <input type="text" name="degree[]" class="form-control" placeholder="Level of education" required="required" />        
                 </td>
                 <td>
-                  {!! Form::text('institute[]', old('institute.0'), ['required' => 'required','class' => 'form-control', 'placeholder' => 'Name of Institute']) !!}
+                  <input type="text" name="institute[]" class="form-control" placeholder="Name of Institute" required="required" />
                 </td>
                 <td>
-                  {!! Form::text('result[]', old('result.0'), ['required' => 'required','class' => 'form-control', 'placeholder' => 'Result in gpa/division']) !!}
+                  <input type="text" name="result[]" class="form-control" placeholder="Result in gpa/division" required="required" />
                 </td>
                 <td>
-                  {!! Form::text('passing_year[]', old('passing_year.0'), ['required' => 'required','class' => 'form-control', 'placeholder' => 'Example: 2012']) !!}
+                  <input type="text" name="passing_year[]" class="form-control" placeholder="Example: 2012" required="required" />
                 </td>
                 <td>
                   <p class="removeRow">
@@ -147,16 +147,16 @@
             <tbody>
               <tr>
                 <td>
-                  {!! Form::text('designation[]', old('designation.0'), ['class' => 'form-control']) !!}
+                  <input type="text" name="designation[]" class="form-control" placeholder="Your Job Title"/>
                 </td>
                 <td>
-                  {!! Form::text('organization[]', old('organization.0'), ['class' => 'form-control']) !!}
+                  <input type="text" name="organization[]" class="form-control" placeholder="Name of Org/Company"/>
                 </td>
                 <td>
-                  {!! Form::date('from[]', old('from.0'), ['class' => 'form-control datepicker fromDatePicker']) !!}
+                  <input type="text" name="from[]" class="form-control datepicker fromDatePicker" placeholder="Start Date"/>
                 </td>
                 <td>
-                  {!! Form::date('to[]', old('to.0'), ['class' => 'form-control datepicker toDatePicker']) !!}
+                  <input type="text" name="to[]" class="form-control datepicker fromDatePicker" placeholder="End Date/Present"/>
                 </td>
                 <td>
                   <p class="removeRow">
